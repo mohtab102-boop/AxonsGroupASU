@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark">
+<title>مرحبًا بكم — طلاب الفرقة الأولى | كلية طب عين شمس</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0D2027;
+    --bg-2:#122A33;
+    --panel:#163540;
+    --panel-2:#1B3F4B;
+    --brass:#D9AE72;
+    --brass-dim:#B8935A;
+    --text:#F3EEE1;
+    --text-dim:#C9C3B4;
+    --sage:#7FBFA8;
+    --burgundy:#E38A8A;
+    --line:rgba(243,238,225,0.12);
+    color-scheme: dark;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'IBM Plex Sans Arabic', sans-serif;
+    font-weight:400;
+    line-height:1.9;
+    -webkit-font-smoothing:antialiased;
+  }
+  .display{font-family:'Aref Ruqaa', serif;}
+  ::selection{background:var(--brass-dim);color:#141414;}
+  a{color:inherit;}
+
+  .paper::before{
+    content:"";
+    position:fixed;inset:0;
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(217,174,114,0.06), transparent 40%),
+      radial-gradient(circle at 85% 70%, rgba(127,191,168,0.05), transparent 45%);
+    pointer-events:none;
+    z-index:0;
+  }
+
+  /* ---------- nav ---------- */
+  .nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(13,32,39,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1100px;margin:0 auto;padding:14px 24px;
+    display:flex;align-items:center;justify-content:space-between;
+    gap:16px;flex-wrap:wrap;
+  }
+  .nav-brand{display:flex;align-items:center;gap:10px;font-weight:600;color:var(--text);}
+  .nav-brand .dot{width:9px;height:9px;border-radius:50%;background:var(--brass);}
+  .nav-links{display:flex;gap:22px;flex-wrap:wrap;font-size:14px;}
+  .nav-links a{text-decoration:none;color:var(--text-dim);opacity:.85;transition:.2s;}
+  .nav-links a:hover{opacity:1;color:var(--brass);}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    padding:90px 24px 70px;
+    background:linear-gradient(180deg,var(--bg) 0%, var(--bg-2) 100%);
+    color:var(--text);
+    text-align:center;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-bismillah{
+    font-family:'Aref Ruqaa',serif;font-size:26px;color:var(--brass);
+    letter-spacing:1px;margin-bottom:18px;opacity:0;animation:fadeUp .9s .1s forwards;
+  }
+  .hero h1{
+    font-family:'Aref Ruqaa',serif;font-weight:700;
+    font-size:clamp(34px,6vw,58px);
+    margin:0 0 14px;color:var(--text);
+    opacity:0;animation:fadeUp .9s .3s forwards;
+  }
+  .hero p.lead{
+    max-width:640px;margin:0 auto;color:var(--text-dim);
+    font-size:17px;
+    opacity:0;animation:fadeUp .9s .5s forwards;
+  }
+  .hero .tag{
+    display:inline-flex;gap:8px;align-items:center;
+    margin-top:26px;padding:8px 18px;border-radius:999px;
+    border:1px solid rgba(217,174,114,0.4);
+    font-size:13px;color:var(--brass);
+    opacity:0;animation:fadeUp .9s .7s forwards;
+  }
+  @keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+  @media (prefers-reduced-motion:reduce){
+    .hero-bismillah,.hero h1,.hero p.lead,.hero .tag,.hero .wa-cta{animation:none;opacity:1;}
+  }
+
+  .wa-cta{
+    display:inline-flex;flex-direction:column;align-items:center;gap:6px;
+    margin-top:22px;
+    opacity:0;animation:fadeUp .9s .9s forwards;
+  }
+  .wa-cta a{
+    display:inline-flex;align-items:center;gap:10px;
+    background:#1E4B3D;
+    color:#EFFFF6;
+    text-decoration:none;
+    font-weight:700;
+    font-size:16px;
+    padding:14px 30px;
+    border-radius:999px;
+    border:1px solid #3FE08A;
+    box-shadow:0 0 10px rgba(63,224,138,0.55), 0 0 28px rgba(63,224,138,0.35), inset 0 0 12px rgba(63,224,138,0.15);
+    transition:transform .2s, box-shadow .2s;
+  }
+  .wa-cta a:hover{
+    transform:translateY(-2px);
+    box-shadow:0 0 16px rgba(63,224,138,0.75), 0 0 40px rgba(63,224,138,0.5), inset 0 0 14px rgba(63,224,138,0.2);
+  }
+  .wa-cta a svg{width:20px;height:20px;flex:none;filter:drop-shadow(0 0 4px rgba(63,224,138,0.8));}
+  .wa-cta .wa-note{font-size:12.5px;color:var(--text-dim);}
+
+  /* ---------- sections ---------- */
+  section{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:70px 24px;}
+  .section-head{margin-bottom:38px;text-align:center;}
+  .eyebrow{
+    display:block;color:var(--brass);font-size:13px;letter-spacing:3px;
+    text-transform:uppercase;margin-bottom:10px;font-weight:600;
+  }
+  .section-head h2{
+    font-family:'Aref Ruqaa',serif;color:var(--text);
+    font-size:clamp(26px,4vw,36px);margin:0 0 10px;
+  }
+  .section-head p{color:var(--text-dim);max-width:640px;margin:0 auto;font-size:15.5px;}
+
+  /* ---------- exam cards ---------- */
+  .exam-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  @media (max-width:820px){.exam-grid{grid-template-columns:1fr;}}
+  .exam-card{
+    background:var(--panel);border:1px solid var(--line);border-radius:16px;
+    padding:26px 24px;position:relative;overflow:hidden;
+    transition:transform .25s, box-shadow .25s;
+  }
+  .exam-card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(0,0,0,0.35);}
+  .exam-card .pct{
+    font-size:42px;font-weight:700;color:var(--text);line-height:1;
+  }
+  .exam-card .pct span{font-size:16px;color:var(--brass);font-weight:500;}
+  .exam-card h3{margin:14px 0 8px;color:var(--text);font-size:19px;}
+  .exam-card p{font-size:14.5px;color:var(--text-dim);margin:0;}
+  .exam-card .bar{
+    position:absolute;inset-inline-start:0;top:0;bottom:0;width:5px;
+  }
+  .c-assess .bar{background:var(--sage);}
+  .c-prac .bar{background:var(--brass);}
+  .c-final .bar{background:var(--burgundy);}
+
+  /* ---------- subjects table ---------- */
+  .subject-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+  @media (max-width:760px){.subject-grid{grid-template-columns:1fr;}}
+  .subject-card{
+    background:var(--panel);border:1px solid var(--line);border-radius:14px;
+    padding:20px 22px;cursor:pointer;transition:.2s;
+  }
+  .subject-card:hover{border-color:var(--brass);}
+  .subject-top{display:flex;justify-content:space-between;align-items:center;gap:10px;}
+  .subject-top h4{margin:0;color:var(--text);font-size:17px;}
+  .cr-chip{
+    background:var(--panel-2);color:var(--brass);border:1px solid var(--line);
+    font-size:12.5px;padding:4px 10px;border-radius:999px;white-space:nowrap;
+  }
+  .subject-total{font-size:13px;color:var(--text-dim);margin-top:4px;}
+  .subject-breakdown{
+    max-height:0;overflow:hidden;transition:max-height .35s ease;
+  }
+  .subject-card.open .subject-breakdown{max-height:160px;margin-top:14px;}
+  .mini-bars{display:flex;gap:6px;height:8px;border-radius:6px;overflow:hidden;background:var(--panel-2);margin-top:10px;}
+  .mini-bars > div{height:100%;}
+  .mb-a{background:var(--sage);}
+  .mb-p{background:var(--brass);}
+  .mb-f{background:var(--burgundy);}
+  .breakdown-list{list-style:none;padding:0;margin:12px 0 0;font-size:13.5px;color:var(--text-dim);display:flex;flex-direction:column;gap:5px;}
+  .breakdown-list li{display:flex;justify-content:space-between;}
+
+  /* ---------- accordion (retake system) ---------- */
+  .accordion{border-top:1px solid var(--line);}
+  .acc-item{border-bottom:1px solid var(--line);}
+  .acc-head{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:20px 4px;cursor:pointer;color:var(--text);
+  }
+  .acc-head h3{margin:0;font-size:18px;font-weight:600;}
+  .acc-head .plus{
+    width:26px;height:26px;border-radius:50%;border:1px solid var(--brass);
+    display:flex;align-items:center;justify-content:center;color:var(--brass);
+    transition:transform .3s;flex:none;
+  }
+  .acc-item.open .plus{transform:rotate(135deg);}
+  .acc-body{max-height:0;overflow:hidden;transition:max-height .4s ease;font-size:15px;color:var(--text-dim);}
+  .acc-item.open .acc-body{max-height:600px;padding-bottom:20px;}
+  .acc-body ul{margin:8px 0;padding-inline-start:20px;}
+  .acc-body li{margin-bottom:6px;}
+  .warn{color:var(--burgundy);font-weight:600;}
+  .ok{color:var(--sage);font-weight:600;}
+
+  /* ---------- info cards row ---------- */
+  .info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px;}
+  @media (max-width:820px){.info-grid{grid-template-columns:1fr;}}
+  .info-card{
+    background:var(--panel-2);color:var(--text);border-radius:16px;padding:26px 22px;border:1px solid var(--line);
+  }
+  .info-card h4{
+    font-family:'Aref Ruqaa',serif;font-size:21px;margin:0 0 10px;color:var(--brass);
+  }
+  .info-card p{font-size:14.5px;color:var(--text-dim);margin:0;}
+
+  /* ---------- worked example ---------- */
+  .example-box{
+    background:var(--panel);border:1px dashed var(--brass-dim);border-radius:16px;
+    padding:26px 26px;font-size:15px;color:var(--text-dim);
+  }
+  .example-box h4{margin-top:0;color:var(--text);font-family:'Aref Ruqaa',serif;font-size:20px;}
+  .example-box .step{
+    display:flex;gap:12px;align-items:flex-start;margin:12px 0;padding-inline-start:0;
+  }
+  .example-box .num{
+    flex:none;width:26px;height:26px;border-radius:50%;background:var(--panel-2);
+    color:var(--brass);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;
+  }
+
+  /* ---------- calculator (signature) ---------- */
+  .calc{
+    background:linear-gradient(180deg,var(--panel),var(--bg-2));
+    border:1px solid var(--line);border-radius:22px;padding:34px;
+  }
+  .calc-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;margin-bottom:20px;}
+  .calc-total{
+    background:var(--panel-2);color:var(--text);border-radius:16px;padding:16px 24px;text-align:center;min-width:170px;border:1px solid var(--line);
+  }
+  .calc-total .num{font-size:34px;font-weight:700;color:var(--brass);}
+  .calc-total .lbl{font-size:12.5px;opacity:.8;}
+  .calc-status{
+    font-size:14px;padding:10px 16px;border-radius:10px;font-weight:600;
+  }
+  .status-pass{background:rgba(127,191,168,0.14);color:var(--sage);}
+  .status-fail{background:rgba(227,138,138,0.14);color:var(--burgundy);}
+
+  .threshold-select{
+    display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;
+  }
+  .threshold-select button{
+    border:1px solid var(--line);background:var(--panel-2);color:var(--text-dim);
+    padding:8px 16px;border-radius:999px;font-size:13.5px;cursor:pointer;transition:.2s;
+    font-family:inherit;
+  }
+  .threshold-select button.active{background:var(--brass);color:#161616;border-color:var(--brass);}
+
+  .calc-list{display:flex;flex-direction:column;gap:8px;margin-bottom:16px;}
+  .calc-row{
+    display:flex;align-items:center;gap:12px;background:var(--panel-2);border:1px solid var(--line);
+    border-radius:12px;padding:10px 14px;
+  }
+  .calc-row label{flex:1;font-size:14.5px;display:flex;align-items:center;gap:10px;cursor:pointer;color:var(--text);}
+  .calc-row input[type=checkbox]{width:18px;height:18px;accent-color:var(--brass);cursor:pointer;}
+  .calc-row .cr{font-size:13px;color:var(--text-dim);white-space:nowrap;}
+  .calc-add{
+    display:flex;gap:8px;flex-wrap:wrap;
+  }
+  .calc-add input{
+    border:1px solid var(--line);border-radius:10px;padding:9px 12px;font-family:inherit;font-size:13.5px;
+    background:var(--panel-2);color:var(--text);
+  }
+  .calc-add input::placeholder{color:var(--text-dim);}
+  .calc-add input[name=name]{flex:1;min-width:140px;}
+  .calc-add input[name=cr]{width:90px;}
+  .calc-add button{
+    border:none;background:var(--brass);color:#161616;padding:9px 18px;border-radius:10px;
+    cursor:pointer;font-family:inherit;font-size:13.5px;font-weight:600;
+  }
+  .calc-note{font-size:12.5px;color:var(--text-dim);margin-top:14px;}
+
+  /* ---------- footer ---------- */
+  footer{
+    background:var(--bg-2);color:var(--text-dim);
+    text-align:center;padding:50px 24px 36px;font-size:14px;
+    border-top:1px solid var(--line);
+  }
+  footer .display{color:var(--brass);font-size:22px;display:block;margin-bottom:10px;}
+
+  .focus-ring:focus-visible{outline:3px solid var(--brass);outline-offset:2px;}
+
+  .credit-bar{
+    background:var(--bg);
+    border-bottom:1px solid var(--line);
+    text-align:center;
+    padding:6px 12px;
+    font-size:12px;
+    letter-spacing:.5px;
+    color:var(--text-dim);
+  }
+  .credit-bar span{color:var(--brass);font-weight:600;}
+</style>
+</head>
+<body class="paper">
+
+<div class="credit-bar">كتابة ومراجعة <span>Axon's Group | Med ASU</span></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand"><span class="dot"></span> كلية طب عين شمس — الفرقة الأولى</div>
+    <div class="nav-links">
+      <a href="#exams">نظام الامتحانات</a>
+      <a href="#subjects">المواد والنقاط</a>
+      <a href="#retake">نظام الإعادة</a>
+      <a href="#rules">أحكام عامة</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-bismillah">بسم الله الرحمن الرحيم</div>
+  <h1>مرحبًا بكم يا أبناء الدفعة الجديدة</h1>
+  <p class="lead">هذا الدليل يشرح لكم بإيجاز ووضوح نظام الدراسة الجديد المعتمد على النقاط الدراسية، بدءًا من توزيع الامتحانات وحتى قواعد الإعادة والتأجيل، ليكون مرجعًا تعودون إليه كلما احتجتم.</p>
+  <div class="tag">كلية الطب — جامعة عين شمس · الفرقة الأولى</div>
+  <div class="wa-cta">
+    <a href="https://chat.whatsapp.com/DUg2WbrRCiR6MBjaYpK5Uh" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="#3FE08A"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.005c5.46 0 9.9-4.45 9.9-9.92 0-2.65-1.03-5.14-2.9-7.01A9.87 9.87 0 0 0 12.04 2zm0 18.15h-.004a8.23 8.23 0 0 1-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.22 8.22 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.25 8.23zm4.52-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.4-.12-.56.13-.17.25-.65.81-.79.97-.15.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.71-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.16-.25.25-.42.08-.17.04-.31-.02-.44-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43-.15-.01-.31-.01-.48-.01-.17 0-.44.06-.67.31-.23.25-.87.85-.87 2.08 0 1.22.89 2.41 1.01 2.58.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.68-1.19.21-.58.21-1.08.15-1.19-.06-.1-.23-.16-.48-.28z"/></svg>
+      انضم إلى جروب Axon's على واتساب
+    </a>
+    <span class="wa-note">لا تنسَ الانضمام لـ Axon's لمتابعة أي جديد</span>
+  </div>
+</header>
+
+<section id="overview">
+  <div class="section-head">
+    <span class="eyebrow">النظام الجديد</span>
+    <h2>الدراسة بنظام النقاط (Credit Points)</h2>
+    <p>يعتمد العام الدراسي الحالي للفرقة الأولى نظامًا جديدًا قائمًا على النقاط الدراسية، بإجمالي <strong>57 نقطة دراسية</strong> موزعة على مواد العام بأكمله، وينطبق المبدأ نفسه على نظام الامتحانات.</p>
+  </div>
+</section>
+
+<section id="exams">
+  <div class="section-head">
+    <span class="eyebrow">لكل مادة</span>
+    <h2>ثلاثة امتحانات لكل مادة</h2>
+    <p>تتوزع درجة كل مادة على ثلاثة اختبارات مستقلة، على النحو التالي:</p>
+  </div>
+  <div class="exam-grid">
+    <div class="exam-card c-assess">
+      <div class="bar"></div>
+      <div class="pct">30<span>%</span></div>
+      <h3>الاختبار التقييمي (Assessment)</h3>
+      <p>يُعرف اختصارًا بـ"الأسسمنت"، ويتكوّن بالكامل من أسئلة اختيار من متعدد (MCQ). تُعلن مواعيده خلال اليوم التعريفي وعلى مدار العام عبر القنوات الرسمية.</p>
+    </div>
+    <div class="exam-card c-prac">
+      <div class="bar"></div>
+      <div class="pct">30<span>%</span></div>
+      <h3>الاختبار العملي (Practical)</h3>
+      <p>ينقسم إلى قسمين: قسم اختيار من متعدد، وقسم عملي حقيقي (Real Lab) يقف فيه الطالب أمام صورة أو مجسم ويكتب إجابته. وقد يقرر منسق المادة أن يكون الاختبار بالكامل MCQ دون القسم المعملي.</p>
+    </div>
+    <div class="exam-card c-final">
+      <div class="bar"></div>
+      <div class="pct">40<span>%</span></div>
+      <h3>الامتحان النهائي (Final)</h3>
+      <p>يتوزع على 60% أسئلة اختيار من متعدد، و40% أسئلة مقالية قصيرة (Short Essay) تُجاب في سطر أو سطرين. علمًا بأن الأسئلة المقالية تظهر في الفاينال فقط دون سواه من الامتحانات.</p>
+    </div>
+  </div>
+</section>
+
+<section id="subjects">
+  <div class="section-head">
+    <span class="eyebrow">توزيع النقاط</span>
+    <h2>المواد الدراسية ونقاطها</h2>
+    <p>لم تتغيّر المواد عن الأعوام السابقة، وإنما تغيّر نظام توزيع درجاتها ونقاطها الدراسية. اضغط على أي مادة لعرض تفاصيل توزيع درجاتها.</p>
+  </div>
+  <div class="subject-grid" id="subjectGrid"></div>
+</section>
+
+<section id="retake">
+  <div class="section-head">
+    <span class="eyebrow">في حال الرسوب</span>
+    <h2>نظام الإعادة عبر سنوات الدراسة</h2>
+    <p>يختلف عدد فرص الإعادة المسموح بها باختلاف السنة الدراسية، وفق التالي:</p>
+  </div>
+  <div class="accordion" id="accordion">
+    <div class="acc-item open">
+      <div class="acc-head"><h3>الفرقة الأولى</h3><div class="plus">+</div></div>
+      <div class="acc-body">
+        <ul>
+          <li>يُمنح الطالب فرصتين لدراسة السنة: مرة بصفته مستجدًا، ومرة أخرى بصفته معيدًا في حال الرسوب.</li>
+          <li><span class="warn">في حال الرسوب للمرة الثانية، يُفصل الطالب من الكلية نهائيًا دون أي إمكانية للتظلم.</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="acc-item">
+      <div class="acc-head"><h3>الفرقتان الثانية والثالثة</h3><div class="plus">+</div></div>
+      <div class="acc-body">
+        <ul>
+          <li>يُمنح الطالب فرصتين لكل سنة على حدة (مستجدًا ثم معيدًا)، وينطبق الأمر ذاته على الفرقتين.</li>
+          <li>عند الرسوب للمرة الثانية، يحق للطالب التقدّم بتظلّم إلى مجلس الكلية، وفي حال الموافقة يُمنح فرصة إضافية للإعادة — وهذا هو الفارق الجوهري عن نظام الفرقة الأولى.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="acc-item">
+      <div class="acc-head"><h3>الفرقتان الرابعة والخامسة</h3><div class="plus">+</div></div>
+      <div class="acc-body">
+        <ul>
+          <li>الحد الأقصى للدراسة سنتان لكل فرقة على حدة، مع إمكانية منح الطالب <strong>سنتين إضافيتين</strong> لكل فرقة بعد موافقة مجلس الكلية — وهو امتياز أوسع مما هو متاح في الفرقتين الثانية والثالثة.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="acc-item">
+      <div class="acc-head"><h3>الحد الأقصى لسنوات الدراسة</h3><div class="plus">+</div></div>
+      <div class="acc-body">
+        <ul>
+          <li>الفرقة الأولى: سنتان كحد أقصى.</li>
+          <li>الفرقتان الثانية والثالثة: سنتان كحد أقصى لكل فرقة، مع إمكانية منح سنة إضافية واحدة لكل فرقة بموافقة مجلس الكلية.</li>
+          <li>الفرقتان الرابعة والخامسة: سنتان كحد أقصى لكل فرقة، مع إمكانية منح سنتين إضافيتين لكل فرقة بموافقة مجلس الكلية.</li>
+          <li><span class="warn">إذا لم يُتمّ الطالب برنامجه الدراسي خلال السنوات المسموح بها، يُفصل من الكلية.</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="acc-item">
+      <div class="acc-head"><h3>التأجيل الدراسي</h3><div class="plus">+</div></div>
+      <div class="acc-body">
+        <ul>
+          <li>يُسمح بتأجيل السنة الدراسية خلال شهر واحد من بدء الدراسة.</li>
+          <li>الحد الأقصى المسموح به هو تأجيل سنتين طوال مسار الدراسة، سواء كانتا متتاليتين أو منفصلتين.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="rules">
+  <div class="section-head">
+    <span class="eyebrow">أحكام عامة</span>
+    <h2>الرأفة، الصيفي، والتحسين</h2>
+  </div>
+  <div class="info-grid">
+    <div class="info-card">
+      <h4>علامات الرأفة</h4>
+      <p>اعتُمد نظام علامات الرأفة هذا العام: فإذا تبقّى للطالب نصف علامة فقط للوصول إلى درجة النجاح، يُمنح النجاح مباشرة.</p>
+    </div>
+    <div class="info-card">
+      <h4>الدراسة الصيفية</h4>
+      <p>مخصّصة حصرًا للطلاب الراسبين أو المؤجَّلين، لإعادة ما رسبوا فيه فقط. لا يوجد نظام لأخذ مواد إضافية بهدف التخرج المبكر.</p>
+    </div>
+    <div class="info-card">
+      <h4>لا يوجد تحسين</h4>
+      <p>من ينجح في مادة لا يحق له إعادتها لتحسين درجته؛ الإعادة مقصورة على حالة الرسوب فقط. وعند النجاح بعد الإعادة، يُمنح الطالب أعلى درجة ممكنة وهي 64.9%.</p>
+    </div>
+    <div class="info-card">
+      <h4>الحضور</h4>
+      <p>يجب ألا تقل نسبة الحضور عن 75% من الأنشطة العملية والإكلينيكية والزيارات الميدانية وجلسات المجموعات الصغيرة. الحضور غير المستوفي يمنع الطالب من دخول الامتحان النهائي، ويُعتبر رسوبًا في المادة بحد أقصى 64.9% في أي امتحان لاحق لها.</p>
+    </div>
+  </div>
+</section>
+
+<section id="threshold">
+  <div class="section-head">
+    <span class="eyebrow">القاعدة الحاكمة</span>
+    <h2>حد الـ 22 نقطة للانتقال للسنة التالية</h2>
+    <p>يُسمح للطالب بالانتقال إلى السنة الدراسية التالية إذا كان راسبًا في 22 نقطة دراسية أو أقل. أما إن تجاوز رصيد رسوبه 22 نقطة، فإنه يبقى مع دفعة الطلاب المستجدين في العام التالي.</p>
+  </div>
+  <div class="example-box">
+    <h4>مثال توضيحي</h4>
+    <div class="step"><div class="num">1</div><div>يرسب الطالب في مادة الأناتومي فقط، وهي محمّلة بخمس نقاط دراسية. يُعيد الطالب المادة في الدراسة الصيفية بعد انتهاء الفصلين الدراسيين الأول والثاني معًا.</div></div>
+    <div class="step"><div class="num">2</div><div>إن نجح في الصيفي فبها ونعمت، وإن رسب مجددًا، فإنه بصفته راسبًا في خمس نقاط فقط (وهي أقل من 22)، يُسمح له بالانتقال إلى الفرقة الثانية مع الاستمرار في إعادة المادة مع طلاب الفرقة الأولى الجدد.</div></div>
+    <div class="step"><div class="num">3</div><div>يجوز للطالب أن يبقى حاملًا لمادة معلّقة حتى الفصل الدراسي السادس، الذي يمثّل النصف الثاني من الفرقة الثالثة.</div></div>
+    <div class="step"><div class="num">4</div><div>مثال أوسع: لو رسب الطالب في الأناتومي (5) والفسيولوجي (4) والهستولوجي (3) والجنتكس (3) والإميونولوجي (3) والبيوكيمياء (3) والمصطلحات الطبية (1.5)، يكون مجموع رسوبه <strong>22.5 نقطة بالضبط</strong>. فإذا نجح في الصيفي بمادة الجنتكس فقط (3 نقاط)، يهبط رصيده إلى 19.5 نقطة، وهو ما دون الـ22، فينتقل إلى الفرقة الثانية ويُعيد باقي المواد التي رسب فيها مع دفعة العام التالي.</div></div>
+    <div class="step"><div class="num">5</div><div>أما إذا ظلّ رصيد الرسوب بعد الصيفي فوق 22 نقطة، فإن الطالب يبقى مع طلاب الفرقة الأولى الجدد ولا ينتقل إلى الفرقة الثانية.</div></div>
+  </div>
+</section>
+
+<section id="semester">
+  <div class="section-head">
+    <span class="eyebrow">نقطة تحوّل</span>
+    <h2>ما بين الفصلين الخامس والسادس</h2>
+    <p>يتغيّر سقف النقاط المسموح بالرسوب فيه عند نهاية الفصل الدراسي الخامس (الفصل الأول من الفرقة الثالثة)، تمهيدًا للانتقال إلى المرحلة الإكلينيكية.</p>
+  </div>
+  <div class="example-box">
+    <div class="step"><div class="num">1</div><div>خلال العامين الدراسيين الأول والثاني، يظل سقف الرسوب المسموح به للانتقال هو 22 نقطة كما سبق.</div></div>
+    <div class="step"><div class="num">2</div><div>لكن عند إنهاء الفصل الخامس والانتقال إلى الفصل السادس (المرحلة الإكلينيكية)، يجب <span class="warn">ألا يتجاوز رصيد الرسوب 14 نقطة</span> — وليس 22 نقطة كما في العامين الأول والثاني.</div></div>
+    <div class="step"><div class="num">3</div><div>أما عند الانتقال من الفرقة الثالثة إلى <span class="ok">الفرقة الرابعة</span>، فالشرط أن يكون الطالب ناجحًا في جميع المواد دون أي رصيد رسوب على الإطلاق. فإن تبقّت له مادة واحدة، يُعيد الفرقة الثالثة كاملة من أجلها فقط، ويُعيد فيها ما رسب فيه دون سواه.</div></div>
+  </div>
+</section>
+
+<footer>
+  <span class="display">وفّقكم الله ويسّر لكم دربكم</span>
+  جميع المواعيد الدقيقة للامتحانات سيُعلن عنها خلال اليوم التعريفي، وتُنشر أولًا بأول عبر الجروب الرسمي للدفعة.
+</footer>
+
+<script>
+  const subjects = [
+    {name:"الأناتومي (Anatomy)", cr:5, total:100, a:30, p:30, f:40},
+    {name:"الفسيولوجي (Physiology)", cr:4, total:80, a:24, p:24, f:32},
+    {name:"الهستولوجي (Histology)", cr:3, total:60, a:18, p:18, f:24},
+    {name:"البيوكيمياء (Biochemistry)", cr:3, total:60, a:18, p:18, f:24},
+    {name:"الجنتكس (Genetics)", cr:3, total:60, a:18, p:18, f:24},
+    {name:"الإميونولوجي (Immunology)", cr:3, total:60, a:18, p:18, f:24},
+    {name:"المصطلحات الطبية", cr:1.5, total:30, a:null, p:null, f:null},
+    {name:"مهارات العرض والتعلّم وإدارة الوقت", cr:1.5, total:30, a:null, p:null, f:null},
+    {name:"القضايا المجتمعية (Social Issues)", cr:3, total:null, a:null, p:null, f:null, passFail:true},
+  ];
+
+  const grid = document.getElementById('subjectGrid');
+  subjects.forEach(s=>{
+    const card = document.createElement('div');
+    card.className='subject-card';
+    let breakdownHTML;
+    if(s.passFail){
+      breakdownHTML = `<div class="breakdown-list"><li><span>نظام التقييم</span><span>نجاح / رسوب فقط، دون علامات</span></li></div>`;
+    } else if(s.a===null){
+      breakdownHTML = `<div class="breakdown-list"><li><span>إجمالي الدرجة</span><span>${s.total} علامة</span></li></div>`;
+    } else {
+      breakdownHTML = `
+        <div class="mini-bars">
+          <div class="mb-a" style="width:${s.a/s.total*100}%"></div>
+          <div class="mb-p" style="width:${s.p/s.total*100}%"></div>
+          <div class="mb-f" style="width:${s.f/s.total*100}%"></div>
+        </div>
+        <ul class="breakdown-list">
+          <li><span>الأسسمنت</span><span>${s.a} علامة</span></li>
+          <li><span>العملي</span><span>${s.p} علامة</span></li>
+          <li><span>الفاينال</span><span>${s.f} علامة</span></li>
+        </ul>`;
+    }
+    card.innerHTML = `
+      <div class="subject-top">
+        <h4>${s.name}</h4>
+        <span class="cr-chip">${s.cr} نقطة</span>
+      </div>
+      <div class="subject-total">${s.total ? s.total+' علامة إجمالية' : 'بدون علامات — نجاح/رسوب'}</div>
+      <div class="subject-breakdown">${breakdownHTML}</div>
+    `;
+    card.addEventListener('click', ()=> card.classList.toggle('open'));
+    grid.appendChild(card);
+  });
+
+  document.querySelectorAll('.acc-head').forEach(h=>{
+    h.addEventListener('click', ()=>{
+      h.parentElement.classList.toggle('open');
+    });
+  });
+</script>
+
+</body>
+</html>
