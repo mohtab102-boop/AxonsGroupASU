@@ -127,6 +127,31 @@
   .wa-cta a svg{width:20px;height:20px;flex:none;filter:drop-shadow(0 0 4px rgba(63,224,138,0.8));}
   .wa-cta .wa-note{font-size:12.5px;color:var(--text-dim);}
 
+  .sched-cta{
+    display:inline-flex;flex-direction:column;align-items:center;gap:6px;
+    margin-top:16px;
+    opacity:0;animation:fadeUp .9s 1.05s forwards;
+  }
+  .sched-cta a{
+    display:inline-flex;align-items:center;gap:10px;
+    background:#3A2A14;
+    color:#FFF3DD;
+    text-decoration:none;
+    font-weight:700;
+    font-size:16px;
+    padding:14px 30px;
+    border-radius:999px;
+    border:1px solid var(--brass);
+    box-shadow:0 0 10px rgba(217,174,114,0.55), 0 0 28px rgba(217,174,114,0.35), inset 0 0 12px rgba(217,174,114,0.15);
+    transition:transform .2s, box-shadow .2s;
+  }
+  .sched-cta a:hover{
+    transform:translateY(-2px);
+    box-shadow:0 0 16px rgba(217,174,114,0.75), 0 0 40px rgba(217,174,114,0.5), inset 0 0 14px rgba(217,174,114,0.2);
+  }
+  .sched-cta a svg{width:20px;height:20px;flex:none;filter:drop-shadow(0 0 4px rgba(217,174,114,0.8));}
+  .sched-cta .sched-note{font-size:12.5px;color:var(--text-dim);}
+
   /* ---------- sections ---------- */
   section{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:70px 24px;}
   .section-head{margin-bottom:38px;text-align:center;}
@@ -395,6 +420,12 @@
       انضم إلى جروب Axon's على واتساب
     </a>
     <span class="wa-note">لا تنسى متابعة جروبات Axon's لمعرفة أي تحديثات</span>
+  </div>
+  <div class="sched-cta">
+    <a href="https://drive.google.com/file/d/1ihkeESlN4blrLFCkwfVpkVtHepQjlBQR/view?usp=sharing" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#FFF3DD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      الجدول الدراسي
+    </a>
   </div>
 </header>
 
