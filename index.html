@@ -152,6 +152,44 @@
   .sched-cta a svg{width:20px;height:20px;flex:none;filter:drop-shadow(0 0 4px rgba(217,174,114,0.8));}
   .sched-cta .sched-note{font-size:12.5px;color:var(--text-dim);}
 
+  /* ---------- updates / news panel ---------- */
+  .updates-panel{
+    max-width:1100px;margin:0 auto;padding:0 24px 10px;position:relative;z-index:1;
+  }
+  .updates-box{
+    background:var(--panel);
+    border:1px solid rgba(79,216,255,0.55);
+    border-radius:20px;
+    padding:26px 28px;
+    box-shadow:0 0 10px rgba(79,216,255,0.45), 0 0 30px rgba(79,216,255,0.22), inset 0 0 16px rgba(79,216,255,0.08);
+  }
+  .updates-head{
+    display:flex;align-items:center;gap:10px;
+    font-family:'Aref Ruqaa',serif;font-size:21px;color:#4FD8FF;
+    margin-bottom:18px;
+  }
+  .updates-head .live-dot{
+    width:10px;height:10px;border-radius:50%;background:#4FD8FF;
+    box-shadow:0 0 6px #4FD8FF, 0 0 14px rgba(79,216,255,0.7);
+    animation:pulse 1.6s infinite;flex:none;
+  }
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
+  .update-entry{
+    display:flex;flex-direction:column;align-items:flex-start;gap:8px;
+    padding:14px 0;border-top:1px dashed var(--line);
+  }
+  .update-entry:first-of-type{border-top:none;padding-top:0;}
+  .update-btn{
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(79,216,255,0.1);color:#4FD8FF;
+    border:1px solid rgba(79,216,255,0.55);
+    padding:9px 20px;border-radius:999px;
+    text-decoration:none;font-size:14.5px;font-weight:700;
+    transition:.2s;
+  }
+  .update-btn:hover{background:rgba(79,216,255,0.22);}
+  .update-note{margin:0;font-size:13.5px;color:var(--text-dim);}
+
   /* ---------- sections ---------- */
   section{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:70px 24px;}
   .section-head{margin-bottom:38px;text-align:center;}
@@ -428,6 +466,17 @@
     </a>
   </div>
 </header>
+
+<div class="updates-panel">
+  <div class="updates-box">
+    <div class="updates-head"><span class="live-dot"></span> آخر التحديثات</div>
+
+    <div class="update-entry">
+      <a class="update-btn" href="https://drive.google.com/file/d/15tI8648hPQyNU6i-jTTE18hExamvBAxV/view?usp=sharing" target="_blank" rel="noopener">توزيع جروبات ↗</a>
+      <p class="update-note">يجب تكون استلمت رقمك الجامعي من شؤون الطلاب.</p>
+    </div>
+  </div>
+</div>
 
 <section id="overview">
   <div class="section-head">
