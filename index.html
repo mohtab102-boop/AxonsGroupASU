@@ -152,6 +152,34 @@
   .sched-cta a svg{width:20px;height:20px;flex:none;filter:drop-shadow(0 0 4px rgba(217,174,114,0.8));}
   .sched-cta .sched-note{font-size:12.5px;color:var(--text-dim);}
 
+  /* ---------- schedule explanation disclosure ---------- */
+  .sched-disclosure{
+    margin:16px auto 0;max-width:620px;
+    opacity:0;animation:fadeUp .9s 1.15s forwards;
+  }
+  .sched-disclosure-head{
+    display:inline-flex;align-items:center;gap:8px;
+    cursor:pointer;color:var(--brass);font-size:13.5px;
+    background:none;border:none;font-family:inherit;padding:6px 4px;
+  }
+  .sched-disclosure-head .arrow-ic{
+    width:20px;height:20px;border-radius:50%;border:1px solid var(--brass);
+    display:flex;align-items:center;justify-content:center;
+    transition:transform .3s;flex:none;font-size:11px;color:var(--brass);
+  }
+  .sched-disclosure.open .arrow-ic{transform:rotate(180deg);}
+  .sched-disclosure-body{
+    max-height:0;overflow:hidden;transition:max-height .4s ease;
+  }
+  .sched-disclosure.open .sched-disclosure-body{max-height:900px;margin-top:14px;}
+  .sched-disclosure-body .sd-inner{
+    background:var(--panel);border:1px solid var(--line);border-radius:16px;
+    padding:20px 22px;font-size:14px;color:var(--text-dim);line-height:1.9;
+    text-align:start;
+  }
+  .sched-disclosure-body h5{margin:14px 0 6px;color:var(--text);font-family:'Aref Ruqaa',serif;font-size:17px;}
+  .sched-disclosure-body h5:first-child{margin-top:0;}
+
   /* ---------- updates / news panel ---------- */
   .updates-panel{
     max-width:1100px;margin:0 auto;padding:28px 24px 10px;position:relative;z-index:1;
@@ -464,6 +492,24 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="#FFF3DD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
       الجدول الدراسي
     </a>
+  </div>
+
+  <div class="sched-disclosure" id="schedDisclosure">
+    <button type="button" class="sched-disclosure-head" onclick="document.getElementById('schedDisclosure').classList.toggle('open')">
+      <span class="arrow-ic">▾</span> اضغط على السهم لعرض شرح الجدول
+    </button>
+    <div class="sched-disclosure-body">
+      <div class="sd-inner">
+        <h5>توزيع الجروبات</h5>
+        <p>الفرقة مقسّمة إلى 6 جروبات لقسم A و6 جروبات لقسم B (A1, A2, A3... وهكذا). هتعرف جروبك من صورة توزيع الجروبات (زرار "توزيع جروبات" في خانة آخر التحديثات تحت)، بشرط تكون استلمت رقمك الجامعي من شؤون الطلاب.</p>
+
+        <h5>المحاضرات (Lectures)</h5>
+        <p>بتشرح المحتوى النظري للمادة. الحضور هنا مش إجباري (معلهوش غياب)، والتقسيم فيها بيكون بين الطلاب المصريين والوافدين فقط بغض النظر عن جروبك: يوم يبدأ المصريين الصبح والوافدين الظهر، واليوم اللي بعده بيتبدل الترتيب بينكم حسب الجدول.</p>
+
+        <h5>السكاشن (Sections)</h5>
+        <p>بتشرح الجزء العملي من المادة، ولازم فيها نسبة حضور 70% حسب الدليل الدراسي للكلية — يعني مسموح غياب 30% بحد أقصى لكل مادة. دوامها بيكون حسب جروبك تحديدًا (A1, A2...) مش عام زي المحاضرات. بتظهر تحت المحاضرات في الجدول بخط أصغر وموزعة على مدار اليوم، يعني ممكن يكون عندك محاضرة الصبح، وسكشن أو اتنين الساعة 12 الظهر مثلًا.</p>
+      </div>
+    </div>
   </div>
 </header>
 
